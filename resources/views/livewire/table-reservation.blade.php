@@ -17,7 +17,7 @@
         </select>
         <input type="datetime-local" wire:model="reservation_time" class="border p-2 rounded">
     </div>
-    
+
     <button wire:click="reserve" class="w-full bg-indigo-600 text-white py-2 rounded font-bold hover:bg-indigo-700">
         Rezerv et
     </button>

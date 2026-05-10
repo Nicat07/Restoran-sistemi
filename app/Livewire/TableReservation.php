@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Reservation;
-use Carbon\Carbon; // Laravel-in vaxtla işləyən aləti
+use Carbon\Carbon;
 
 class TableReservation extends Component
 {
@@ -13,13 +13,10 @@ class TableReservation extends Component
 
     public function reserve()
     {
-        // 1. Keçmiş vaxtı seçməyə qoymayaq (PHP If məntiqi)
         if (Carbon::parse($this->reservation_time)->isPast()) {
             $this->message = "Xəta: Keçmiş zamana rezervasiya etmək olmaz!";
             return;
         }
-
-        // 2. Masanın həmin vaxtda dolu olub-olmadığını yoxlayaq
         $exists = Reservation::where('table_number', $this->table_number)
             ->where('reservation_time', $this->reservation_time)
             ->exists();
